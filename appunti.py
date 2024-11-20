@@ -136,3 +136,25 @@ collezioneSet = set("abracadabra")  #* collezione non ordinata di oggetti UNICI 
 #? i set supportano operazioni insiemistiche ( AND = &, OR = |, + e - )
 
 #* https://pythontutor.com/python-compiler.html-mode=edit compilatore Python online 
+
+#** FILE **
+
+my_file = open("filename.txt", "r")
+content = my_file.read()
+print(content)
+for line in my_file:
+    print(line)
+my_file.close()
+
+#per non dover aprire e chiudere il file...
+with open("filename.txt", "r") as my_file2:
+    content = my_file.read()
+    print(content)
+
+with open("filename.txt", "w") as my_file3:
+    my_file3.write("Ciao mondo!")
+
+with open("commaseparated.txt", "r") as commafile:
+    for line in commafile:
+        elementi = line.split(",")  # [1, 2]
+        print(elementi)
