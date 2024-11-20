@@ -6,3 +6,6 @@ for number in list:
     sum += number
     
 print(sum)
+
+sum = sum(list)
+print(sum)
