@@ -158,3 +158,45 @@ with open("commaseparated.txt", "r") as commafile:
     for line in commafile:
         elementi = line.split(",")  # [1, 2]
         print(elementi)
+
+#* with può essere utilizzato con oggetti che hanno i metodi __enter__ e __exit__
+#* con il metodo __enter__ si esegue il codice prima di entrare nel with
+#* con il metodo __exit__ si esegue il codice dopo l'uscita dal with
+#? file di rete, file compressi, connessioni database, lock... e ovviamente oggetti custom con quei metodi
+
+#** CLASSI **
+
+#* snake_case per metodi, variabili e istanze
+#* camelCase per le classi
+
+#* private method ==> __method__
+#? dir(istanza_oggetto) stampa tutti gli attributi e i metodi della classe istanziata
+
+class Person():
+    def __init__(self, name, surname):
+        self.name = name
+        self.surname = surname
+        
+    def __str__(self):
+        return 'Person "{} {}"'.format(self.name, self.surname)
+    
+class Student(Person):
+    def __init__(self, name, surname, number):
+        super().__init__(name, surname)
+        self.number = number
+        
+    def __str__(self):
+        return super().__str__ + 'Student number "{}"'.format(self.number)
+
+person = Person("Mario", "Rossi")
+print(person)
+print(person.name)
+print(person.surname)
+
+student = Student("Andrea", "Marino", "s326255")
+print(student)
+print(student.name)
+print(student.surname)
+print(student.number)
+
+#---------#---------#---------#---------#---------#---------#---------#--------

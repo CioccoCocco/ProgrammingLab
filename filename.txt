@@ -1,0 +1,4 @@
+Ciao, come va?
+Sono un file
+Di testo
+E adesso ci saranno degli Hello World
