@@ -200,3 +200,102 @@ print(student.surname)
 print(student.number)
 
 #---------#---------#---------#---------#---------#---------#---------#--------
+
+str = "banana"
+itr = iter(str)
+print(next(itr))
+
+class myNumber():
+    def __init__(self):
+        pass
+    
+    def __iter__(self):
+        #* dico a python come trasformare il mio oggetto in un iterabile
+        self.a = 0  #! stato interno dell'iteratore
+        return self
+    
+    def __next__(self):
+        #* dico a python come recuperare il prossimo elemento dell'iterabile
+        a += 1
+        return self.a - 1
+    
+class myRange():
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.start > self.end:
+            raise StopIteration 
+        else:
+            self.start += 1
+            return self.start - 1
+
+pippo = myRange(0, 10)
+for x in pippo: #* posso non chiamare iter() perchè essa è implicita qua
+    print(x)
+
+#!! IL SEGUENTE E' IL CODICE IMPLICITO
+#       iter_obj = iter(Iterable)
+#       while True:
+#           try:
+#               element = next(iter_obj)
+#           except StopIteration:
+#               break
+
+class powerTwo():
+    def __init__(self):
+        pass
+    
+    def __iter__(self):
+        self.i = 0
+        return self
+    
+    def __next__(self):
+        i += 1
+        return 2 ** (i-1)
+    
+class powerTwoAlt():
+    def __init__(self):
+        pass
+    
+    def __iter__(self):
+        self.i = 1
+        return self
+    
+    def __next__(self):
+        i *= 2
+        return i / 2
+    
+class powerTwoMK():
+    def __init__(self, start, end):
+        self.start = start
+        self.end = end
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.start > self.end:
+            raise StopIteration 
+        else:
+            self.start += 1
+            return 2 ** (self.start - 1)
+        
+class betPowTwo():
+    def __init__(self, m, k):
+        self.start = 2 ** m
+        self.end = 2 ** k
+    
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        if self.start > self.end:
+            raise StopIteration 
+        else:
+            self.start += 1
+            return self.start - 1
