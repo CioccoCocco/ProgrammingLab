@@ -299,3 +299,17 @@ class betPowTwo():
         else:
             self.start += 1
             return self.start - 1
+         
+# MODELLI
+
+class TrendModel():
+    def predict(self, data):
+        prev_value = None
+        for item in data:
+            if prev_value == None:
+                prev_value = item
+            else:
+                prev_value = item - prev_value
+        
+        prediction = data[-1] + ( prev_value / len(data) )
+        return prediction
